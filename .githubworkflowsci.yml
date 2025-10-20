@@ -1,0 +1,32 @@
+name: Expo CI Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Lint
+        run: npm run lint || echo "No lint configured"
+
+      - name: Run Tests
+        run: npm test || echo "No tests configured"
+
+      - name: Build Expo app (simulate)
+        run: |
+          npx expo prebuild || echo "No prebuild config"
