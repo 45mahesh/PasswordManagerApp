@@ -1,12 +1,25 @@
+# Node / npm
 node_modules/
+npm-debug.log*
+yarn-error.log
+
+# Expo / React Native / builds
 .expo/
-dist/
+.expo-shared/
 build/
+android/
+ios/
 *.apk
 *.aab
 *.keystore
-credentials.json
-backup/
-storage/
+*.jks
+
+# Local env / secrets
 .env
+.env.local
+credentials.json
+securevault.keystore
+
+# Editor and OS files
+.vscode/
 .DS_Store
